@@ -42,7 +42,7 @@ export class GetPatreonPosts {
   }
 
   public async loadCookies(): Promise<puppeteer.Protocol.Network.Cookie[]> {
-    return await (await this.loadPage()).cookies("https://patreon.com");
+    return await (await this.loadPage()).cookies() as puppeteer.Protocol.Network.Cookie[];
   }
 
   public async loadAllPosts(): Promise<DataEntity[]> {
