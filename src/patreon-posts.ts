@@ -111,7 +111,7 @@ export class GetPatreonPosts {
       .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
       .join("&");
     const url = `https://www.patreon.com/api/posts?${queryString}`;
-    const data = await page.evaluate<(arg: string) => Promise<PostData>>(async (url) => {
+    const data = await page.evaluate(async (url) => {
       const req = {
         headers: {
           "content-type": "application/vnd.api+json",
@@ -207,7 +207,7 @@ export class GetPatreonPostComments {
       .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
       .join("&");
     const url = `https://www.patreon.com/api/posts/${this.postId}/comments?${queryString}`;
-    const data = await this.page.evaluate<(arg: string) => Promise<Comments>>(async (url) => {
+    const data = await this.page.evaluate(async (url) => {
       const req = {
         headers: {
           "content-type": "application/vnd.api+json",
