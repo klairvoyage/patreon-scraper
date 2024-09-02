@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import * as puppeteer from 'puppeteer';
 import { format, Url, parse } from "url";
 
 async function getCampaignId(url: Url) {

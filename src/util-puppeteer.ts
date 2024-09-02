@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import * as puppeteer from 'puppeteer';
 
 export function logRequests(page: puppeteer.Page) {
   page.on("requestfailed", (request) => {

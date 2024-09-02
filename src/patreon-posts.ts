@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import * as puppeteer from 'puppeteer';
 import { forwardConsole, logRequests } from "./util-puppeteer";
 import { DataEntity, PostData } from "./PostDataInterface";
 import { Comments } from "./Comments";
