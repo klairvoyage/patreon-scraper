@@ -34,7 +34,7 @@ function renderComment(comment: Comment, included: IncludedEntity[]): string {
   } = comment;
   const result: string[] = [`<div class="comment"><ul>`];
 
-  if (relationships?.commenter && relationships?.commenter.data.id) {
+  if (relationships?.commenter && relationships.commenter?.data.id) {
     const commenter = included.find((ea) => ea.id == relationships?.commenter?.data.id);
     if (commenter && commenter.attributes.full_name) {
       result.push(
@@ -54,12 +54,11 @@ function renderComment(comment: Comment, included: IncludedEntity[]): string {
 <div class="comment-body">${body}</div>`
   );
 
-  if (relationships?.replies) {
-    for (const { id, type } of relationships.replies.data) {
-      const reply = type == "comment" && included.find((ea) => ea.id == id);
-      if (reply) {
+  if (relationships?.first_reply?.data) {
+    const replyId = relationships.first_reply.data.id;
+    const reply = included.find((ea) => ea.id === replyId && ea.type === 'comment');
+    if (reply) {
         result.push(renderComment(reply as Comment, included));
-      }
     }
   }
 
